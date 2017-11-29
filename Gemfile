@@ -25,6 +25,8 @@ gem 'carrierwave', '~> 1.2', '>= 1.2.1'
 
 gem 'omniauth', '~> 1.7', '>= 1.7.1'
 
+gem 'country_select', '~> 3.1', '>= 3.1.1'
+
 #gem 'pg', '~> 0.21.0'
 
 # Use jquery as the JavaScript library
