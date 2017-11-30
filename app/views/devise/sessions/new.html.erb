@@ -1,15 +1,86 @@
-<h2>Log in</h2>
+<!-- <div class="container">
+	<div class="row">
+		<div class="col-6 col-md-4"></div>
+		<div class="col-6 col-md-4">
+			<h2>Identifiez-vous</h2>
+			<br>
+			<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+			  <div class="form-inputs">
+			    <%= f.input :email, required: true, autofocus: true, placeholder: "Votre adresse email" %>
+			    <%= f.input :password, required: true, placeholder: "Votre mot de passe" %>
+			    <%= f.input :"remember_me", as: :boolean if devise_mapping.rememberable? %>
+			  </div>
 
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :email, required: false, autofocus: true %>
-    <%= f.input :password, required: false %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
+			  <div class="form-actions">
+			    <%= f.button :submit, "Connectez-vous" %>
+			  </div>
+			<% end %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Log in" %>
-  </div>
-<% end %>
+			<%= render "devise/shared/links", class: {} %>
+		</div>
+		<div class="col-6 col-md-4">&nbsp;</div>
+	</div>
+</div> -->
 
-<%= render "devise/shared/links" %>
+<body class="login-body">
+
+<div class="container">
+
+    <form class="form-signin" action="index.html">
+        <div class="form-signin-heading text-center">
+            <h1 class="sign-title">Sign In</h1>
+            <%= image_tag 'img/login-logo.png' %>
+        </div>
+        <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="login-wrap">
+            <%= f.input :email, required: true, autofocus: true, placeholder: 'Votre adresse email', class: "form-control" %>
+            <%= f.input :password, require: true, placeholder: 'Votre mot de passe' %>
+
+            <%= f.button :submit, "Envoyer", class: "btn btn-lg btn-login btn-block" %>
+
+            <label class="checkbox">
+                <%= f.check_box :"remember_me", as: :boolean if devise_mapping.rememberable? %>
+                <span class="pull-right">
+                  <a data-toggle="modal" href="#myModal"> Mot de passe oublié?</a>
+                </span>
+            </label>
+        <% end %>
+
+            <div class="registration">
+                Pas de compte?
+                <a class="" href="registration.html">
+                    Créer
+                </a>
+            </div>
+
+            <%= render "devise/shared/links" %>
+
+        </div>
+
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">Forgot Password ?</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Enter your e-mail address below to reset your password.</p>
+                        <input type="text" name="email" placeholder="Email" autocomplete="off" class="form-control placeholder-no-fix">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button data-dismiss="modal" class="btn btn-default" type="button">Cancel</button>
+                        <button class="btn btn-primary" type="button">Submit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- modal -->
+
+    </form>
+
+</div>
+
+</body>
